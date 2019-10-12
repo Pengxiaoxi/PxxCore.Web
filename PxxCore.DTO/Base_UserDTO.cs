@@ -4,7 +4,16 @@ using System.Text;
 
 namespace PxxCore.DTO
 {
-    class Base_UserDTO
+    public class Base_UserDTO
     {
+        public int ID { get; set; }
+
+        public string Name { get; set; }
+
+        public string Sex { get; set; }
+
+        public string Password { get; set; }
+
+        public string Age { get; set; }
     }
 }
