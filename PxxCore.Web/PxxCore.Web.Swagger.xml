@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PxxCore.Web</name>
+    </assembly>
+    <members>
+        <member name="T:PxxCore.Web.Controller.LoginController">
+            <summary>
+            LoginController
+            </summary>
+        </member>
+        <member name="M:PxxCore.Web.Controller.LoginController.Get">
+            <summary>
+            Get
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PxxCore.Web.Controller.LoginController.Get(System.Int32)">
+            <summary>
+            GET: api/Login/5
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PxxCore.Web.Controller.LoginController.Post(System.String)">
+            <summary>
+            POST: api/Login
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:PxxCore.Web.Controller.LoginController.Put(System.Int32,System.String)">
+            <summary>
+            PUT: api/Login/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:PxxCore.Web.Controller.LoginController.Delete(System.Int32)">
+            <summary>
+            DELETE: api/ApiWithActions/5
+            </summary>
+            <param name="id"></param>
+        </member>
+    </members>
+</doc>

@@ -7,6 +7,6 @@ namespace PxxCore.Repository.EFCore
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class, new()
     {
-
+        private DbContextBase dbContext;
     }
 }
