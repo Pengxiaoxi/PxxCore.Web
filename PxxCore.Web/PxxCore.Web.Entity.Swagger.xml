@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PxxCore.Entity</name>
+    </assembly>
+    <members>
+        <member name="T:PxxCore.Entity.Base_User">
+            <summary>
+            用户实体
+            </summary>
+        </member>
+        <member name="P:PxxCore.Entity.Base_User.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:PxxCore.Entity.Base_User.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+    </members>
+</doc>

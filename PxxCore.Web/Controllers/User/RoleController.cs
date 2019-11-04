@@ -4,20 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PxxCore.Entity;
 
-namespace PxxCore.Web.Controller
+namespace PxxCore.Web.Controllers.User
 {
-    /// <summary>
-    /// LoginController
-    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    //[ApiExplorerSettings(IgnoreApi = true)]   //Swagger 忽略此Api
-    public class LoginController : PublicController
+    public class RoleController : ControllerBase
     {
         /// <summary>
-        /// Get
+        /// GET: api/Role
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -27,20 +22,18 @@ namespace PxxCore.Web.Controller
         }
 
         /// <summary>
-        /// GET: api/Login/5
+        /// GET: api/Role/5
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public List<Base_User> Get(int id)
+        public string Get(int id)
         {
-            var userList = dbContext.Query<Base_User>().Where(t => t.ID == id).ToList();
-
-            return userList;
+            return "value";
         }
 
         /// <summary>
-        /// POST: api/Login
+        /// POST: api/Role
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
@@ -49,7 +42,7 @@ namespace PxxCore.Web.Controller
         }
 
         /// <summary>
-        /// PUT: api/Login/5
+        /// PUT: api/Role/5
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>

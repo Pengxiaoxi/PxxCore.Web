@@ -1,0 +1,28 @@
+﻿==2019-11-4 10:37:01==
+
+1、Startup.cs中Swagger的配置 
+	//PxxCoreSwaggerV1 需要和 ConfigureServices 中 SwaggerDoc的name相同，否则提示Not found json file problem
+	[调用Swagger服务中使用的名字需要和配置中名字相同]
+
+	在Swagger页面下显示Model的注释需 同Controller一样配置，但对于Model的引用需通过dll ?
+
+2、创建的ApiController 的 Get方法的默认路由 [HttpGet("{id}", Name = "Get")] 后面name属性需删除，否则Swagger无法区分
+	Swagger会提示 :
+	{
+		InvalidOperationException: The following errors occurred with attribute routing information:
+		Attribute routes with the same name 'Get' must have the same template:
+		Action: 'PxxCore.Web.Controllers.User.UserController.Get (PxxCore.Web)' - Template: 'api/User/{id}'
+		Action: 'PxxCore.Web.Controller.LoginController.Get (PxxCore.Web)' - Template: 'api/Login/{id}'
+	}
+
+3、Api接口的分组（版本控制） 及 禁用
+	[ApiExplorerSettings(IgnoreApi = true)]   //忽略此Api  (Swagger不会显示)
+    [ApiExplorerSetting(GroupName = "V1")]    //V1
+
+4、
+
+
+
+PxxCore.Web.Swagger.xml & PxxCore.Web.Entity.Swagger.xml   Core.Web下有，但如果从 AppDomain.CurrentDomain.BaseDirectory 也就是项目的bin目录下的文件夹取取不到。
+
+	

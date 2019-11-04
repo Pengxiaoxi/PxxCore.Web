@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PxxCore.Entity\PxxCore.Entity.csproj" />
     <ProjectReference Include="..\PxxCore.Repository\PxxCore.Repository.EFCore.csproj" />
   </ItemGroup>
 

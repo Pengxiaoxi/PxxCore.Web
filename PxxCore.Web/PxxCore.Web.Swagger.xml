@@ -41,5 +41,69 @@
             </summary>
             <param name="id"></param>
         </member>
+        <member name="M:PxxCore.Web.Controllers.User.RoleController.Get">
+            <summary>
+            GET: api/Role
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.RoleController.Get(System.Int32)">
+            <summary>
+            GET: api/Role/5
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.RoleController.Post(System.String)">
+            <summary>
+            POST: api/Role
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.RoleController.Put(System.Int32,System.String)">
+            <summary>
+            PUT: api/Role/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.RoleController.Delete(System.Int32)">
+            <summary>
+            DELETE: api/ApiWithActions/5
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.UserController.Get">
+            <summary>
+            GET: api/User
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.UserController.Get(System.Int32)">
+            <summary>
+            GET: api/User/5
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.UserController.Post(System.String)">
+            <summary>
+            POST: api/User
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.UserController.Put(System.Int32,System.String)">
+            <summary>
+            PUT: api/User/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:PxxCore.Web.Controllers.User.UserController.Delete(System.Int32)">
+            <summary>
+            DELETE: api/ApiWithActions/5
+            </summary>
+            <param name="id"></param>
+        </member>
     </members>
 </doc>

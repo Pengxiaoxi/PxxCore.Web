@@ -45,9 +45,18 @@ namespace PxxCore.Web
                 });
 
                 //Swagger 读取xml注释，显示 接口注释
-                var basePath = AppDomain.CurrentDomain.BaseDirectory;
+                var basePath = Directory.GetCurrentDirectory();
+
+                //var basePath1 = AppDomain.CurrentDomain.BaseDirectory;
+
+                //var basePath2 = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;
+
                 var swaggerXmlPath = Path.Combine(basePath, "PxxCore.Web.Swagger.xml");
                 c.IncludeXmlComments(swaggerXmlPath, true); //第二个参数是 Controller 的注释
+
+                //Swagger 显示Model注释
+                var swaggerModelXmlPath = Path.Combine(basePath, "PxxCore.Web.Entity.Swagger.xml");
+                c.IncludeXmlComments(swaggerModelXmlPath);
             });
             #endregion
         }
