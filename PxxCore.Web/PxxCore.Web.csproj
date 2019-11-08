@@ -24,4 +24,8 @@
     <ProjectReference Include="..\PxxCore.Repository\PxxCore.Repository.EFCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="02_GitImg\" />
+  </ItemGroup>
+
 </Project>
