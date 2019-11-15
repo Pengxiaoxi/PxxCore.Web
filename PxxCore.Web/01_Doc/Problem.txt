@@ -19,7 +19,10 @@
 	[ApiExplorerSettings(IgnoreApi = true)]   //忽略此Api  (Swagger不会显示)
     [ApiExplorerSetting(GroupName = "V1")]    //V1
 
-4、
+4、CodeFirst创建数据库、表   [Table("Base_User")]  数据注释属性  MaxLength等
+	[不会影响已有数据]
+	Add-Migration v1
+	Update-Database v1
 
 
 

@@ -25,9 +25,9 @@ namespace PxxCore.Web
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false).Build();
 
-            //设置连接字符串 NoTracking
+            //设置连接字符串
             services.AddDbContext<DbContextBase>(options =>
-                options.UseSqlServer(ConfigurationExtensions.GetConnectionString(configuration, "Pxx_Database")));
+                options.UseSqlServer(ConfigurationExtensions.GetConnectionString(configuration, "Pxx_Database"), b => b.MigrationsAssembly("PxxCore.Web")));
 
 
             services.AddMvc();
@@ -95,7 +95,6 @@ namespace PxxCore.Web
             app.UseMvc();
 
             app.UseCookiePolicy();
-            
         }
     }
 }

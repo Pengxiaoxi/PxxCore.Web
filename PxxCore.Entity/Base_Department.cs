@@ -6,11 +6,8 @@ using System.Text;
 
 namespace PxxCore.Entity
 {
-    /// <summary>
-    /// 用户实体
-    /// </summary>
-    [Table("Base_User")]
-    public class Base_User : BaseEntity
+    [Table("Base_Department")]
+    public class Base_Department : BaseEntity
     {
         #region Property
         /// <summary>
@@ -46,12 +43,12 @@ namespace PxxCore.Entity
         /// <summary>
         /// 创建日期
         /// </summary>
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         /// <summary>
         /// 修改日期
         /// </summary>
-        public DateTime? ModifyDate { get; set; }
+        public DateTime ModifyDate { get; set; }
 
         /// <summary>
         /// 添加人
@@ -64,12 +61,6 @@ namespace PxxCore.Entity
         /// </summary>
         [MaxLength(32)]
         public string ModifyBy { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [MaxLength(32)]
-        public string Remark { get; set; }
 
         #endregion
 

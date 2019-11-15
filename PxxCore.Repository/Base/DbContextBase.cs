@@ -13,15 +13,7 @@ namespace PxxCore.Repository.EFCore
         public DbContextBase(DbContextOptions<DbContextBase> options)
             : base(options)
         {
-            //this.CreateDB();
-        }
-
-        public DbSet<Base_User> Base_User { get; set; }
-
-
-        public void CreateDB()
-        {
-            Database.EnsureCreated();
+            
         }
 
         /// <summary>
@@ -34,9 +26,21 @@ namespace PxxCore.Repository.EFCore
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
+        /// <summary>
+        /// CodeFirst  模型创建或更新
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
         }
+
+        #region DbSet Model
+        public DbSet<Base_User> Base_User { get; set; }
+
+        public DbSet<Base_Department> Base_Department { get; set; }
+
+        public DbSet<Base_SysLog> Base_SysLog { get; set; }
+        #endregion
     }
 }

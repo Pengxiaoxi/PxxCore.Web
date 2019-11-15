@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PxxCore.Entity\PxxCore.Entity.csproj" />
     <ProjectReference Include="..\PxxCore.IRepository\PxxCore.IRepository.csproj" />
   </ItemGroup>
 
@@ -14,9 +15,6 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
       <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.configuration.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="PxxCore.Entity">
-      <HintPath>..\PxxCore.Entity\bin\Debug\netcoreapp2.2\PxxCore.Entity.dll</HintPath>
     </Reference>
   </ItemGroup>
 

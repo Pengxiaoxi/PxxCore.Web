@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PxxCore.Entity;
+using PxxCore.Repository.EFCore;
 
 namespace PxxCore.Web.Controller
 {
@@ -13,17 +14,26 @@ namespace PxxCore.Web.Controller
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    //[ApiExplorerSettings(IgnoreApi = true)]   //Swagger 忽略此Api
-    public class LoginController : PublicController
+    //[ApiExplorerSettings(IgnoreApi = true)]   //设置ApiExplorerSettings 会禁用此Api
+    public class LoginController : PublicController<Base_User>
     {
         /// <summary>
         /// Get
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var userList = await Repository.GetList();
+
+                return Ok(userList);
+            }
+            catch (Exception ex)
+            {
+                return Ok(new JsonResult("") {StatusCode = 404, Value = ex.Message });
+            }
         }
 
         /// <summary>
@@ -32,11 +42,9 @@ namespace PxxCore.Web.Controller
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public List<Base_User> Get(int id)
+        public ActionResult Get(int id)
         {
-            var userList = dbContext.Query<Base_User>().Where(t => t.ID == id).ToList();
-
-            return userList;
+            return Ok(new {name = "PxxCore", pass = "123" });
         }
 
         /// <summary>
