@@ -11,12 +11,14 @@ namespace PxxCore.Web.Controller
     [Route("api/[controller]")]
     [ApiController]
     public class PublicController<T> : ControllerBase where T : class, new()
-    {
-        //public DbContextBase dbContext
+    { 
+        private readonly DbContextBase _context;
 
-        //private readonly DbContextBase _context;
+        //public PublicController(DbContextBase dbContext)
+        //{
+        //    _context = dbContext;
+        //}
 
-        protected BaseRepository<T> Repository = new BaseRepository<T>(DbContextBase dbContext);
 
     }
 }

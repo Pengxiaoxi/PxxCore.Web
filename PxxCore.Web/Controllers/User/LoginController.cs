@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PxxCore.Entity;
 using PxxCore.Repository.EFCore;
 
@@ -17,6 +18,13 @@ namespace PxxCore.Web.Controller
     //[ApiExplorerSettings(IgnoreApi = true)]   //设置ApiExplorerSettings 会禁用此Api
     public class LoginController : PublicController<Base_User>
     {
+        private readonly DbContextBase _context;
+
+        public LoginController(DbContextBase dbContext)
+        {
+            _context = dbContext;
+        }
+
         /// <summary>
         /// Get
         /// </summary>
@@ -26,13 +34,13 @@ namespace PxxCore.Web.Controller
         {
             try
             {
-                var userList = await Repository.GetList();
+                var userList = await _context.Set<Base_User>().OrderByDescending(t => t.CreateDate).ToListAsync();
 
                 return Ok(userList);
             }
             catch (Exception ex)
             {
-                return Ok(new JsonResult("") {StatusCode = 404, Value = ex.Message });
+                return Ok(new JsonResult("") {StatusCode = 200, Value = ex.Message });
             }
         }
 
