@@ -17,7 +17,7 @@ C Cool
 1、检查 NetCore SDK、引用的程序集（NuGet包）等
 
 2、编译无问题，修改AppSetting中数据库连接字符串Uid及Pwd，最后在程序包管理控制台依次执行以下命令自动创建数据库、表
-  Add-Migration V1
-  Update-Database
+  "Add-Migration V1",
+  "Update-Database"
 
 3、F5运行即可看到上面Swagger页面
