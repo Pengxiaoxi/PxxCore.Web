@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PxxCore.Repository.EFCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.Hosting;
+using Swashbuckle.AspNetCore.Filters;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace PxxCore.Web
 {
@@ -29,19 +28,24 @@ namespace PxxCore.Web
             services.AddDbContext<DbContextBase>(options =>
                 options.UseSqlServer(ConfigurationExtensions.GetConnectionString(configuration, "Pxx_Database"), b => b.MigrationsAssembly("PxxCore.Web")));
 
-
+            //Mvc服务  在DotNet Core 3.0中可选择性添加Mvc的部分服务。如AddControllers(), 
             services.AddMvc();
 
-            #region Swagger
+            //services.AddMvcCore();  //稍微精简的mvc注册
+            //services.AddControllers(); //适用于api的mvc部分服务注册
+            //services.AddRazorPages();   //含有api和view的部分服务注册
+            //services.AddControllersWithViews(); //razor服务注册
+
+            #region Swagger Service
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("PxxCoreSwaggerV1", new Info
+                c.SwaggerDoc("PxxCoreSwaggerV1", new OpenApiInfo
                 {
                     Version = "V1.0",
                     Title = "PxxCore WepApi",
                     Description = "PxxCore.Swagger Doc",
-                    Contact = new Contact { Name = "Pxx", Email = "pengxi1520@outlook.com", Url = "www.google.com" },
-                    TermsOfService = "None"
+                    Contact = new OpenApiContact { Name = "Pxx", Email = "pengxi1520@outlook.com", Url = new Uri("https://www.cnblogs.com/await-pxx/") }
+                    //TermsOfService = "None"
                 });
 
                 //Swagger 读取xml注释，显示 接口注释
@@ -57,12 +61,15 @@ namespace PxxCore.Web
                 //Swagger 显示Model注释
                 var swaggerModelXmlPath = Path.Combine(basePath, "PxxCore.Web.Entity.Swagger.xml");
                 c.IncludeXmlComments(swaggerModelXmlPath);
+
+                //c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
             #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
             #region IsDevelopment => ErrorPage
@@ -92,7 +99,13 @@ namespace PxxCore.Web
             //    await context.Response.WriteAsync("Hello World!");
             //});
 
-            app.UseMvc();
+            app.UseRouting();   //路由中间件
+            app.UseEndpoints(endPoints =>
+            {
+                endPoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.UseCookiePolicy();
         }

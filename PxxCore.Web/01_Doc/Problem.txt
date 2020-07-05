@@ -1,4 +1,7 @@
-﻿==2019-11-4 10:37:01==
+﻿
+# DotNetCore 2.0 + EF Core 2.2 + Swaagger 4.0
+
+==2019-11-4 10:37:01==
 
 1、Startup.cs中Swagger的配置 
 	//PxxCoreSwaggerV1 需要和 ConfigureServices 中 SwaggerDoc的name相同，否则提示Not found json file problem
@@ -27,5 +30,11 @@
 
 
 PxxCore.Web.Swagger.xml & PxxCore.Web.Entity.Swagger.xml   Core.Web下有，但如果从 AppDomain.CurrentDomain.BaseDirectory 也就是项目的bin目录下的文件夹取取不到。
+
+
+--2020-7-5 11:34:52
+
+5、已升级至DotNet Core 3.1 Ok
+
 
 	
