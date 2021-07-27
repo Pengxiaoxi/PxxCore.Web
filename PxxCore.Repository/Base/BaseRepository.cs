@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -19,15 +20,26 @@ namespace PxxCore.Repository.EFCore
 
 
         #region Async
-        public async Task<List<T>> GetList()
+        public async Task<List<T>> GetListAsync()
         {
-            return await dbContext.Set<T>().ToListAsync();
+            return await dbContext.Set<T>().AsQueryable().AsNoTracking().ToListAsync();
         }
 
-        public async Task<int> SaveChanges()
+        public async Task<List<T>> GetListAsync(Expression<Func<T, bool>> expression)
         {
-            return await dbContext.SaveChangesAsync();
+            return await dbContext.Set<T>().AsQueryable().AsNoTracking().Where(expression).ToListAsync();
         }
+
+        public IQueryable<T> GetQuery()
+        {
+            return dbContext.Set<T>().AsQueryable().AsNoTracking();
+        }
+
+        public IQueryable<T> GetQuery(Expression<Func<T, bool>> expression)
+        {
+            return dbContext.Set<T>().AsQueryable().AsNoTracking().Where(expression);
+        }
+
         #endregion
     }
 }

@@ -18,11 +18,9 @@ namespace PxxCore.Web.Controller
     //[ApiExplorerSettings(IgnoreApi = true)]   //设置ApiExplorerSettings 会禁用此Api
     public class LoginController : PublicController<Base_User>
     {
-        private readonly DbContextBase _context;
-
-        public LoginController(DbContextBase dbContext)
+        public LoginController()
         {
-            _context = dbContext;
+            
         }
 
         /// <summary>
@@ -34,7 +32,7 @@ namespace PxxCore.Web.Controller
         {
             try
             {
-                var userList = await _context.Set<Base_User>().OrderByDescending(t => t.CreateDate).ToListAsync();
+                //var userList = await _context.Set<Base_User>().OrderByDescending(t => t.CreateDate).ToListAsync();
 
                 return Ok(userList);
             }

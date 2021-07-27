@@ -12,13 +12,6 @@ namespace PxxCore.Web.Controller
     [ApiController]
     public class PublicController<T> : ControllerBase where T : class, new()
     { 
-        private readonly DbContextBase _context;
-
-        //public PublicController(DbContextBase dbContext)
-        //{
-        //    _context = dbContext;
-        //}
-
 
     }
 }
